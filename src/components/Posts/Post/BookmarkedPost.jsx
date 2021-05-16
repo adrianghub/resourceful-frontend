@@ -2,29 +2,21 @@ import React from "react";
 
 import {
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   Button,
   Typography,
 } from "@material-ui/core";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import DeleteIcon from "@material-ui/icons/Delete";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 
-import { useDispatch } from "react-redux";
 
 import useStyles from "./styles";
-import { deletePost, bookmarkPost } from "../../../actions/posts";
 
 export default function Post({ post, getModal, setCurrentId }) {
-  const dispatch = useDispatch();
   const classes = useStyles();
 
-  const { title, author, createdAt, message, tags, isLiked, selectedFile } =
+  const { title, author, createdAt, message, tags, selectedFile } =
     post;
 
   return (
@@ -34,18 +26,9 @@ export default function Post({ post, getModal, setCurrentId }) {
         <Typography variant="h6">{author}</Typography>
         <Typography variant="body2">{moment(createdAt).fromNow()}</Typography>
       </div>
-      <div className={classes.overlay2}>
+      <div className={classes.overlay3}>
         <Button style={{ color: "white" }} size="small" onClick={getModal}>
           <VisibilityIcon fontSize="default" />
-        </Button>
-      </div>
-      <div className={classes.overlay3}>
-        <Button
-          style={{ color: "white" }}
-          size="small"
-          onClick={() => setCurrentId(post._id)}
-        >
-          <MoreHorizIcon fontSize="default" />
         </Button>
       </div>
       <div className={classes.details}>
@@ -66,23 +49,6 @@ export default function Post({ post, getModal, setCurrentId }) {
           {message}
         </Typography>
       </CardContent>
-      <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" onClick={() => dispatch(bookmarkPost(post._id))}>
-          {isLiked ? (
-            <FavoriteIcon fontSize="small" />
-          ) : (
-            <FavoriteBorderIcon fontSize="small" />
-          )} Bookmark
-        </Button>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => dispatch(deletePost(post._id))}
-        >
-          <DeleteIcon fontSize="small" />
-          Delete
-        </Button>
-      </CardActions>
     </Card>
   );
 }

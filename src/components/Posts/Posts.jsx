@@ -3,6 +3,7 @@ import { Grid, Button, CircularProgress } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 import Post from "./Post/Post";
+import BookmarkedPost from "./Post/BookmarkedPost";
 import SearchInput from "../SearchInput/SearchInput";
 import CustomModal from "../CustomModal/CustomModal";
 
@@ -61,6 +62,7 @@ export default function Posts({ setCurrentId }) {
   };
 
   const displayFavoriteList = () => {
+    console.log("click");
 
     const posts = allPosts;
 
@@ -99,7 +101,7 @@ export default function Posts({ setCurrentId }) {
         >
           {favoritePosts.map((post) => (
             <Grid key={post._id} item xs={12} sm={12}>
-              <Post
+              <BookmarkedPost
                 post={post}
                 getModal={() => getModal(post)}
                 setCurrentId={setCurrentId}
