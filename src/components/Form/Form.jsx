@@ -7,7 +7,7 @@ import useStyles from './styles';
 import { createPost } from '../../actions/posts';
 
 export default function Form() {
-  const [postData, setPostData] = useState({ author: '', title: '', message: '', tags: '', selectedFile: '' });
+  const [postData, setPostData] = useState({ author: '', title: '', message: '', snippetUrl: '', tags: '', selectedFile: '' });
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -28,7 +28,8 @@ export default function Form() {
         <TextField name="author" varient="outlined" label="Author" fullWidth value={postData.author} onChange={(e) => setPostData({  ...postData, author: e.target.value })} />
         <TextField name="title" varient="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({  ...postData, title: e.target.value })} />
         <TextField name="message" varient="outlined" label="Message" fullWidth value={postData.message} onChange={(e) => setPostData({  ...postData, message: e.target.value })} />
-        <TextField name="tags" varient="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({  ...postData, tags: e.target.value })} />
+        <TextField name="url" varient="outlined" label="SnippetUrl" fullWidth value={postData.snippetUrl} onChange={(e) => setPostData({  ...postData, snippetUrl: e.target.value })} />
+        <TextField name="tags" varient="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({  ...postData, tags: e.target.value.split(' ') })} />
         <div className={classes.fileInput}>
           <FileBase 
             type="file"
