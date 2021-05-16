@@ -6,10 +6,15 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 
+import { useDispatch } from 'react-redux';
+
 import useStyles from './styles';
+import { deletePost } from '../../../actions/posts';
 
 export default function Post({ post, getModal, setCurrentId }) {
+  const dispatch = useDispatch()
   const classes = useStyles();
+
 
   const { title, author, createdAt, message, tags, likeCount, selectedFile  } = post;
 
@@ -43,7 +48,7 @@ export default function Post({ post, getModal, setCurrentId }) {
             <ThumbUpAltIcon fontSize="small" />
             Like {likeCount}
           </Button>
-          <Button size="small" color="primary" onClick={() => {}}>
+          <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
             <DeleteIcon fontSize="small" />
             Delete
           </Button>
