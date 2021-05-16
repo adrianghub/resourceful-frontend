@@ -7,6 +7,8 @@ import { getPosts } from './actions/posts';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import LOGO_IMG from '../src/images/logo.png'
+
+import './index.css'
 import useStyles from './styles';
 
 const App = () => {
