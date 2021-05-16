@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, CircularProgress } from "@material-ui/core";
+import { Grid, Button, CircularProgress } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 import Post from "./Post/Post";
@@ -8,8 +8,9 @@ import CustomModal from "../CustomModal/CustomModal";
 
 import useStyles from "./styles";
 
-export default function Posts({ setCurrentId  }) {
+export default function Posts({ setCurrentId }) {
   const allPosts = useSelector((state) => state.posts);
+  const [favoriteList, setFavoriteList] = useState([]);
   const classes = useStyles();
 
   const EMPTY_QUERY = "";
@@ -20,15 +21,15 @@ export default function Posts({ setCurrentId  }) {
   });
   const [showModal, setShowModal] = useState(false);
   const [dataModel, setDataModal] = useState({
-    title: '',
-    author: '',
-    message: '',
-    snippetUrl: '',
+    title: "",
+    author: "",
+    message: "",
+    snippetUrl: "",
     createdAt: new Date(),
     tags: [],
-    likeCount: 0,
-    selectedFile: '',
-  })
+    isLiked: false,
+    selectedFile: "",
+  });
 
   const handleInputChange = (e) => {
     const query = e.target.value;
@@ -36,15 +37,13 @@ export default function Posts({ setCurrentId  }) {
     const posts = allPosts;
 
     const filteredData = posts.filter((post) => {
-
       const { title, tags } = post;
 
       return (
         (title && title.toLowerCase().includes(query.toLowerCase())) ||
-        (tags && tags[0].toLowerCase().includes(query.toLowerCase())));
+        (tags && tags[0].toLowerCase().includes(query.toLowerCase()))
+      );
     });
-
-    console.log(query, filteredData);
 
     setFilter({
       query,
@@ -55,20 +54,61 @@ export default function Posts({ setCurrentId  }) {
   const getModal = (data) => {
     setShowModal(true);
     setDataModal(data);
-  }
+  };
 
   const hideModal = () => {
     setShowModal(false);
-  }
+  };
+
+  const displayFavoriteList = () => {
+
+    const posts = allPosts;
+
+    const filteredData = posts.filter((post) => {
+      return post.isLiked;
+    });
+
+    setFavoriteList(filteredData);
+  };
+
+  const displayAllPosts = () => {
+
+    setFavoriteList([]);
+  };
 
   const { filteredData, query } = filter;
   const hasSearchResults = filteredData && query !== EMPTY_QUERY;
   const posts = hasSearchResults ? filteredData : allPosts;
+  const favoritePosts = hasSearchResults ? filteredData : favoriteList;
 
   return (
-    <>  
+    <>
       <SearchInput handleInputChange={(e) => handleInputChange(e)} />
-      {!posts.length ? (
+      <Button onClick={() => displayFavoriteList()} color="primary" outlined>
+        XXX
+      </Button>
+      <Button onClick={() => displayAllPosts()} color="primary" outlined>
+        YYY
+      </Button>
+      {favoriteList.length ? (
+        <Grid
+          className={classes.mainContainer}
+          container
+          alignItems="stretch"
+          spacing={3}
+        >
+          {favoritePosts.map((post) => (
+            <Grid key={post._id} item xs={12} sm={12}>
+              <Post
+                post={post}
+                getModal={() => getModal(post)}
+                setCurrentId={setCurrentId}
+              />
+            </Grid>
+          ))}
+          <CustomModal show={showModal} hide={hideModal} content={dataModel} />
+        </Grid>
+      ) : !posts.length ? (
         <CircularProgress />
       ) : (
         <Grid
@@ -78,20 +118,15 @@ export default function Posts({ setCurrentId  }) {
           spacing={3}
         >
           {posts.map((post) => (
-              <Grid key={post._id} item xs={12} sm={12}>
-                <Post
-                  post={post}
-                  getModal={() => getModal(post)}
-                  setCurrentId={setCurrentId}
-                />
-              </Grid>
-          ))
-          }
-        <CustomModal
-          show={showModal}
-          hide={hideModal}
-          content={dataModel}
-        />
+            <Grid key={post._id} item xs={12} sm={12}>
+              <Post
+                post={post}
+                getModal={() => getModal(post)}
+                setCurrentId={setCurrentId}
+              />
+            </Grid>
+          ))}
+          <CustomModal show={showModal} hide={hideModal} content={dataModel} />
         </Grid>
       )}
     </>

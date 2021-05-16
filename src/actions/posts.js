@@ -41,3 +41,13 @@ export const deletePost = (id) => async (dispatch) => {
     Comment.log(error);
   }
 }
+
+export const bookmarkPost = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.bookmarkPost(id);
+
+    dispatch({ type: 'BOOKMARK', payload: data })
+  } catch (error) {
+    console.log(error);
+  }
+}
