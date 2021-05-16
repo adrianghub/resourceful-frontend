@@ -8,7 +8,7 @@ import CustomModal from "../CustomModal/CustomModal";
 
 import useStyles from "./styles";
 
-export default function Posts() {
+export default function Posts({ setCurrentId  }) {
   const allPosts = useSelector((state) => state.posts);
   const classes = useStyles();
 
@@ -82,6 +82,7 @@ export default function Posts() {
                 <Post
                   post={post}
                   getModal={() => getModal(post)}
+                  setCurrentId={setCurrentId}
                 />
               </Grid>
           ))
