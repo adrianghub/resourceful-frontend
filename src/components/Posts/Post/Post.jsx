@@ -49,19 +49,19 @@ export default function Post({ post, getModal, setCurrentId }) {
         </Button>
       </div>
       <div className={classes.details}>
-        <Typography
+        <Typography variant="subtitle2" color="textSecondary" className={classes.tags}>
+          {tags.map((tag) => `#${tag} `)}
+        </Typography>
+      </div>
+      <Typography
           className={classes.title}
           variant="h4"
         >
           {title}
         </Typography>
-        <Typography variant="body2" color="textSecondary">
-          {tags.map((tag) => `#${tag} `)}
-        </Typography>
-      </div>
 
       <CardContent>
-        <Typography className={classes.message} variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" color="textSecondary" component="p">
           {message}
         </Typography>
       </CardContent>

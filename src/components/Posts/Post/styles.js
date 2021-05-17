@@ -44,17 +44,17 @@ export default makeStyles({
   },
   details: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     margin: '20px',
+  },
+  tags: {
+    fontWeight: 'bold' 
   },
   title: {
     padding: '0 16px',
   },
-  message: {
-    padding: '0 20px',
-  },
   cardActions: {
-    padding: '0 16px 8px 16px',
+    padding: '0 12px 8px 12px',
     display: 'flex',
     justifyContent: 'space-between',
   },
