@@ -52,17 +52,16 @@ export default function Post({ post, getModal, setCurrentId }) {
         <Typography
           className={classes.title}
           variant="h4"
-          color="text-secondary"
         >
           {title}
         </Typography>
-        <Typography variant="body2" color="text-secondary">
+        <Typography variant="body2" color="textSecondary">
           {tags.map((tag) => `#${tag} `)}
         </Typography>
       </div>
 
       <CardContent>
-        <Typography className={classes.message} variant="h6" gutterBottom>
+        <Typography className={classes.message} variant="body2" color="textSecondary" component="p">
           {message}
         </Typography>
       </CardContent>
@@ -72,7 +71,7 @@ export default function Post({ post, getModal, setCurrentId }) {
             <FavoriteIcon fontSize="small" />
           ) : (
             <FavoriteBorderIcon fontSize="small" />
-          )} Bookmark
+          )} &nbsp; Bookmark
         </Button>
         <Button
           size="small"
@@ -80,7 +79,7 @@ export default function Post({ post, getModal, setCurrentId }) {
           onClick={() => dispatch(deletePost(post._id))}
         >
           <DeleteIcon fontSize="small" />
-          Delete
+          &nbsp; Delete
         </Button>
       </CardActions>
     </Card>

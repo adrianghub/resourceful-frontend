@@ -27,7 +27,7 @@ export default function Posts({ setCurrentId }) {
     message: "",
     snippetUrl: "",
     createdAt: new Date(),
-    tags: [],
+    tags: '',
     isLiked: false,
     selectedFile: "",
   });
@@ -42,7 +42,7 @@ export default function Posts({ setCurrentId }) {
 
       return (
         (title && title.toLowerCase().includes(query.toLowerCase())) ||
-        (tags && tags[0].toLowerCase().includes(query.toLowerCase()))
+        (tags && (tags.find(tag => tag.toLowerCase().includes(query.toLowerCase()))))
       );
     });
 
@@ -87,10 +87,10 @@ export default function Posts({ setCurrentId }) {
     <>
       <SearchInput handleInputChange={(e) => handleInputChange(e)} />
       <Button onClick={() => displayFavoriteList()} color="primary" outlined>
-        XXX
+        BOOKMARKS
       </Button>
       <Button onClick={() => displayAllPosts()} color="primary" outlined>
-        YYY
+        ALL POSTS
       </Button>
       {favoriteList.length ? (
         <Grid
