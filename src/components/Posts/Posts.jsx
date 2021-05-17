@@ -62,7 +62,6 @@ export default function Posts({ setCurrentId }) {
   };
 
   const displayFavoriteList = () => {
-    console.log("click");
 
     const posts = allPosts;
 

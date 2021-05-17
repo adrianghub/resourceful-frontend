@@ -10,14 +10,12 @@ import {
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import moment from "moment";
 
-
 import useStyles from "./styles";
 
-export default function Post({ post, getModal, setCurrentId }) {
+export default function Post({ post, getModal }) {
   const classes = useStyles();
 
-  const { title, author, createdAt, message, tags, selectedFile } =
-    post;
+  const { title, author, createdAt, message, tags, selectedFile } = post;
 
   return (
     <Card className={classes.card}>
@@ -32,20 +30,17 @@ export default function Post({ post, getModal, setCurrentId }) {
         </Button>
       </div>
       <div className={classes.details}>
-        <Typography
-          className={classes.title}
-          variant="h4"
-          color="text-secondary"
-        >
-          {title}
-        </Typography>
-        <Typography variant="body2" color="text-secondary">
+        <Typography className={classes.tags} variant="subtitle2" color="textSecondary">
           {tags.map((tag) => `#${tag} `)}
         </Typography>
       </div>
 
+      <Typography className={classes.title} variant="h4">
+        {title}
+      </Typography>
+
       <CardContent>
-        <Typography className={classes.message} variant="h6" gutterBottom>
+        <Typography variant="body2" color="textSecondary">
           {message}
         </Typography>
       </CardContent>
