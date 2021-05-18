@@ -14,7 +14,7 @@ export default makeStyles((theme) => ({
     border: 'none',
     borderRadius: '5px',
     padding: '10px',
-    margin: '20px 0',
+    margin: '0 0 20px',
     fontSize: '1.2rem',
     outline: 'none',
     boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
