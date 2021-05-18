@@ -49,16 +49,17 @@ export default function Post({ post, getModal, setCurrentId }) {
         </Button>
       </div>
       <div className={classes.details}>
-        <Typography variant="subtitle2" color="textSecondary" className={classes.tags}>
+        <Typography
+          variant="subtitle2"
+          color="textSecondary"
+          className={classes.tags}
+        >
           {tags.map((tag) => `#${tag} `)}
         </Typography>
       </div>
-      <Typography
-          className={classes.title}
-          variant="h4"
-        >
-          {title}
-        </Typography>
+      <Typography className={classes.title} variant="h4">
+        {title}
+      </Typography>
 
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -66,12 +67,17 @@ export default function Post({ post, getModal, setCurrentId }) {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" onClick={() => dispatch(bookmarkPost(post._id))}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => dispatch(bookmarkPost(post._id))}
+        >
           {isLiked ? (
             <FavoriteIcon fontSize="small" />
           ) : (
             <FavoriteBorderIcon fontSize="small" />
-          )} &nbsp; Bookmark
+          )}{" "}
+          &nbsp; Bookmark
         </Button>
         <Button
           size="small"
