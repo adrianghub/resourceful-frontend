@@ -5,5 +5,10 @@ export default makeStyles((theme) => ({
     mainContainer: {
       flexDirection: "column-reverse"
     }
-  }
+  },
+  pagination: {
+    borderRadius: 4,
+    marginTop: '1rem',
+    padding: '16px',
+  },
 }));

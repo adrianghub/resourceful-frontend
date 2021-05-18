@@ -10,12 +10,6 @@ export default makeStyles((theme) => ({
     padding: theme.spacing(2),
     position: 'static',
   },
-  [theme.breakpoints.up('md')]: {
-    paper: {
-      position: 'sticky',
-      top: '20px',
-    }
-  },
   form: {
     display: 'flex',
     flexWrap: 'wrap',
