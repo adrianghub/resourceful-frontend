@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-// const devUrl = 'https://localhost:5000/posts'; 
-const url = 'https://snippet-hint-backend.herokuapp.com/posts';
+// local host - dev
+const url = 'http://localhost:5000/posts'; 
+// prod
+// const url = 'https://snippet-hint-backend.herokuapp.com/posts';
 
 export const fetchPosts = () => axios.get(url);
 export const createPost = (newPost) => axios.post(url, newPost);

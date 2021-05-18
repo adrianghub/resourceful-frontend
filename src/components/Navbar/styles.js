@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { amber, blueGrey, deepPurple } from '@material-ui/core/colors';
+import { amber, blueGrey } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   appBar: {
