@@ -15,7 +15,10 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    return dispatch(getPosts());
+    async function fetchData() {
+      dispatch(getPosts());
+    }
+    fetchData();
   }, [currentId, dispatch]);
 
   return (
