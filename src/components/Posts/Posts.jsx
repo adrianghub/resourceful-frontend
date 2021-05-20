@@ -85,10 +85,10 @@ export default function Posts({ setCurrentId }) {
   return (
     <>
       <SearchInput handleInputChange={(e) => handleInputChange(e)} />
-      <Button onClick={() => displayFavoriteList()} color="primary" outlined>
+      <Button style={{'margin': '0 0 20px'}} onClick={() => displayFavoriteList()} color="primary" variant="contained">
         BOOKMARKS
       </Button>
-      <Button onClick={() => displayAllPosts()} color="primary" outlined>
+      <Button style={{'margin': '0 10px 20px'}} onClick={() => displayAllPosts()} color="primary" variant="contained">
         ALL POSTS
       </Button>
       {favoriteList.length ? (
