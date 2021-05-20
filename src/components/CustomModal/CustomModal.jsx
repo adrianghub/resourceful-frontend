@@ -33,7 +33,7 @@ const CustomModal = ({ show, hide, content }) => {
             </DialogContent>
             <DialogContent dividers>
               <Typography gutterBottom>
-              <iframe width="100%" height="500" src={content.snippetUrl} allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0" title={content.title}></iframe>
+              <iframe width="100%" height="500" src={content.snippetUrl} allowFullScreen={true} frameBorder="0" title={content.title}></iframe>
               </Typography>
             </DialogContent>
             <DialogActions>
