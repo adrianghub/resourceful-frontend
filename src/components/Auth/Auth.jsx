@@ -7,15 +7,22 @@ import {
   Typography,
   Container,
 } from "@material-ui/core";
+import { GoogleLogin } from 'react-google-login';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom'
+
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import CustomInput from "./CustomInput";
 
 import useStyles from "./styles";
+import Icon from "./icon";
 
 const Auth = () => {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleShowPassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -34,6 +41,24 @@ const Auth = () => {
     handleShowPassword(false);
   };
 
+  const handleGoogleSuccess = async (res) => {
+    const result = res?.profileObj;
+    const token = res?.tokenId;
+
+    try {
+      dispatch({ type: 'AUTH', data: { result, token } });
+
+      history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+  const handleGoogleFailure = () => {
+    console.log("Google Sign In was unsuccessful. Try again...")
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
@@ -41,7 +66,7 @@ const Auth = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography variant="h5">{isSignup ? "Sign Up" : "Sign In"}</Typography>
-        <from className={classes.from} onSubmit={handleSubmit}>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             {isSignup && (
               <>
@@ -92,6 +117,23 @@ const Auth = () => {
           >
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
+          <GoogleLogin 
+            clientId="102014470382-chu87mifedvd7bh1ivuc1vhnnhahgmur.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <Button 
+                className={classes.goggleButton} 
+                color="primary" 
+                fullWidth 
+                onClick={renderProps.onClick} 
+                disabled={renderProps.disabled}
+                startIcon={<Icon />} 
+                variant="contained"
+              >Sign In with Goggle</Button>
+            )}
+            onSuccess={handleGoogleSuccess}
+            onFailure={handleGoogleFailure}
+            cookiePolicy="single_host_origin"
+          />
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={handleSwitchMode}>
@@ -101,7 +143,7 @@ const Auth = () => {
               </Button>
             </Grid>
           </Grid>
-        </from>
+        </form>
       </Paper>
     </Container>
   );
