@@ -24,14 +24,14 @@ export default function Post({ post, getModal, setCurrentId }) {
   const dispatch = useDispatch();
   const classes = useStyles();
 
-  const { title, author, createdAt, message, tags, isLiked, selectedFile } =
+  const { title, name, createdAt, message, tags, isLiked, selectedFile } =
     post;
 
   return (
     <Card className={classes.card}>
       <CardMedia className={classes.media} image={selectedFile} title={title} />
       <div className={classes.overlay}>
-        <Typography variant="h6">{author}</Typography>
+        <Typography variant="h6">{name}</Typography>
         <Typography variant="body2">{moment(createdAt).fromNow()}</Typography>
       </div>
       <div className={classes.overlay2}>
