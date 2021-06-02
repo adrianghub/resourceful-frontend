@@ -23,9 +23,11 @@ import { deletePost, bookmarkPost } from "../../../actions/posts";
 export default function Post({ post, getModal, setCurrentId }) {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const user = JSON.parse(localStorage.getItem("profile"));
 
-  const { title, name, createdAt, message, tags, isLiked, selectedFile } =
-    post;
+  const { title, name, createdAt, message, tags, isLiked, selectedFile } = post;
+
+  console.log(post.author);
 
   return (
     <Card className={classes.card}>
@@ -67,26 +69,31 @@ export default function Post({ post, getModal, setCurrentId }) {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => dispatch(bookmarkPost(post._id))}
-        >
-          {isLiked ? (
-            <FavoriteIcon fontSize="small" />
-          ) : (
-            <FavoriteBorderIcon fontSize="small" />
-          )}{" "}
-          &nbsp; Bookmark
-        </Button>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => dispatch(deletePost(post._id))}
-        >
-          <DeleteIcon fontSize="small" />
-          &nbsp; Delete
-        </Button>
+        {(user?.result?.googleId || user?.result?._id) && (
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => dispatch(bookmarkPost(post._id))}
+          >
+            {isLiked ? (
+              <FavoriteIcon fontSize="small" />
+            ) : (
+              <FavoriteBorderIcon fontSize="small" />
+            )}{" "}
+            &nbsp; Bookmark
+          </Button>
+        )}
+        {(user?.result?.googleId === post?.author ||
+          user?.result?._id === post?.author) && (
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => dispatch(deletePost(post._id))}
+          >
+            <DeleteIcon fontSize="small" />
+            &nbsp; Delete
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

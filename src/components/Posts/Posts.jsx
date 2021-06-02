@@ -14,6 +14,8 @@ export default function Posts({ setCurrentId }) {
   const [favoriteList, setFavoriteList] = useState([]);
   const classes = useStyles();
 
+  const user = JSON.parse(localStorage.getItem("profile"));
+
   const EMPTY_QUERY = "";
 
   const [filter, setFilter] = useState({
@@ -23,11 +25,11 @@ export default function Posts({ setCurrentId }) {
   const [showModal, setShowModal] = useState(false);
   const [dataModel, setDataModal] = useState({
     title: "",
-    author: "",
+    name: "",
     message: "",
     snippetUrl: "",
     createdAt: new Date(),
-    tags: '',
+    tags: "",
     isLiked: false,
     selectedFile: "",
   });
@@ -42,7 +44,8 @@ export default function Posts({ setCurrentId }) {
 
       return (
         (title && title.toLowerCase().includes(query.toLowerCase())) ||
-        (tags && (tags.find(tag => tag.toLowerCase().includes(query.toLowerCase()))))
+        (tags &&
+          tags.find((tag) => tag.toLowerCase().includes(query.toLowerCase())))
       );
     });
 
@@ -62,7 +65,6 @@ export default function Posts({ setCurrentId }) {
   };
 
   const displayFavoriteList = () => {
-
     const posts = allPosts;
 
     const filteredData = posts.filter((post) => {
@@ -73,7 +75,6 @@ export default function Posts({ setCurrentId }) {
   };
 
   const displayAllPosts = () => {
-
     setFavoriteList([]);
   };
 
@@ -85,12 +86,26 @@ export default function Posts({ setCurrentId }) {
   return (
     <>
       <SearchInput handleInputChange={(e) => handleInputChange(e)} />
-      <Button style={{'margin': '0 0 20px'}} onClick={() => displayFavoriteList()} color="primary" variant="contained">
-        BOOKMARKS
-      </Button>
-      <Button style={{'margin': '0 10px 20px'}} onClick={() => displayAllPosts()} color="primary" variant="contained">
-        ALL POSTS
-      </Button>
+      {(user?.result?.googleId || user?.result?._id) && (
+        <>
+          <Button
+            style={{ margin: "0 0 20px" }}
+            onClick={() => displayFavoriteList()}
+            color="primary"
+            variant="contained"
+          >
+            BOOKMARKS
+          </Button>
+          <Button
+            style={{ margin: "0 10px 20px" }}
+            onClick={() => displayAllPosts()}
+            color="primary"
+            variant="contained"
+          >
+            ALL POSTS
+          </Button>
+        </>
+      )}
       {favoriteList.length ? (
         <Grid
           className={classes.mainContainer}
