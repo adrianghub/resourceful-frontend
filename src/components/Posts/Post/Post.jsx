@@ -27,8 +27,6 @@ export default function Post({ post, getModal, setCurrentId }) {
 
   const { title, name, createdAt, message, tags, isLiked, selectedFile } = post;
 
-  console.log(post.author);
-
   return (
     <Card className={classes.card}>
       <CardMedia className={classes.media} image={selectedFile} title={title} />
@@ -36,18 +34,21 @@ export default function Post({ post, getModal, setCurrentId }) {
         <Typography variant="h6">{name}</Typography>
         <Typography variant="body2">{moment(createdAt).fromNow()}</Typography>
       </div>
+      {(user?.result?.googleId === post?.author ||
+        user?.result?._id === post?.author) && (
+        <div className={classes.overlay3}>
+          <Button
+            style={{ color: "white" }}
+            size="small"
+            onClick={() => setCurrentId(post._id)}
+          >
+            <MoreHorizIcon fontSize="default" />
+          </Button>
+        </div>
+      )}
       <div className={classes.overlay2}>
         <Button style={{ color: "white" }} size="small" onClick={getModal}>
           <VisibilityIcon fontSize="default" />
-        </Button>
-      </div>
-      <div className={classes.overlay3}>
-        <Button
-          style={{ color: "white" }}
-          size="small"
-          onClick={() => setCurrentId(post._id)}
-        >
-          <MoreHorizIcon fontSize="default" />
         </Button>
       </div>
       <div className={classes.details}>

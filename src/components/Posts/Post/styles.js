@@ -30,13 +30,13 @@ export default makeStyles({
   overlay2: {
     position: 'absolute',
     top: '15px',
-    right: '50px',
+    right: '10px',
     color: 'white',
   },
   overlay3: {
     position: 'absolute',
     top: '15px',
-    right: '10px',
+    right: '50px',
     color: 'white',
   },
   grid: {
