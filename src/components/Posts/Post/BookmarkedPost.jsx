@@ -24,7 +24,7 @@ export default function Post({ post, getModal }) {
         <Typography variant="h6">{author}</Typography>
         <Typography variant="body2">{moment(createdAt).fromNow()}</Typography>
       </div>
-      <div className={classes.overlay3}>
+      <div className={classes.overlay2}>
         <Button style={{ color: "white" }} size="small" onClick={getModal}>
           <VisibilityIcon fontSize="default" />
         </Button>

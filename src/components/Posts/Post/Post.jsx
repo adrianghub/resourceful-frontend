@@ -11,6 +11,7 @@ import {
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Tooltip from "@material-ui/core/Tooltip";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
@@ -70,7 +71,7 @@ export default function Post({ post, getModal, setCurrentId }) {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        {(user?.result?.googleId || user?.result?._id) && (
+        {user?.result?.googleId || user?.result?._id ? (
           <Button
             size="small"
             color="primary"
@@ -83,9 +84,16 @@ export default function Post({ post, getModal, setCurrentId }) {
             )}{" "}
             &nbsp; Bookmark
           </Button>
+        ) : (
+          <Tooltip title="Available only for logged users">
+            <Button size="small">
+              <FavoriteBorderIcon fontSize="small" />
+              &nbsp; Bookmark
+            </Button>
+          </Tooltip>
         )}
-        {(user?.result?.googleId === post?.author ||
-          user?.result?._id === post?.author) && (
+        {user?.result?.googleId === post?.author ||
+        user?.result?._id === post?.author ? (
           <Button
             size="small"
             color="primary"
@@ -94,6 +102,13 @@ export default function Post({ post, getModal, setCurrentId }) {
             <DeleteIcon fontSize="small" />
             &nbsp; Delete
           </Button>
+        ) : (
+          <Tooltip title="Available only for the owner of this post">
+            <Button size="small">
+              <DeleteIcon fontSize="small" />
+              &nbsp; Delete
+            </Button>
+          </Tooltip>
         )}
       </CardActions>
     </Card>

@@ -11,6 +11,11 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     padding: '10px 50px',
   },
+  [theme.breakpoints.down('sm')]: {
+    appBar: {
+      flexDirection: "column"
+    }
+  },
   heading: {
     color: '#3A4454',
     fontFamily: "'Pangolin', cursive",
@@ -22,7 +27,7 @@ export default makeStyles((theme) => ({
   toolbar: {
     display: 'flex',
     justifyContent: 'flex-end',
-    width: '400px',
+    width: '300px',
   },
   profile: {
     display: 'flex',

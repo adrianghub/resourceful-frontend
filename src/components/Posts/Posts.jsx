@@ -86,10 +86,10 @@ export default function Posts({ setCurrentId }) {
   return (
     <>
       <SearchInput handleInputChange={(e) => handleInputChange(e)} />
-      {(user?.result?.googleId || user?.result?._id) && (
+      {(user?.result?.googleId || user?.result?._id) ? (
         <>
           <Button
-            style={{ margin: "0 0 20px" }}
+            className={classes.topButtonLeft}
             onClick={() => displayFavoriteList()}
             color="primary"
             variant="contained"
@@ -97,7 +97,7 @@ export default function Posts({ setCurrentId }) {
             BOOKMARKS
           </Button>
           <Button
-            style={{ margin: "0 10px 20px" }}
+            className={classes.topButtonRight}
             onClick={() => displayAllPosts()}
             color="primary"
             variant="contained"
@@ -105,6 +105,23 @@ export default function Posts({ setCurrentId }) {
             ALL POSTS
           </Button>
         </>
+      ) : (
+        <>
+        <Button
+          className={classes.topButtonLeft}
+          variant="contained"
+          disabled
+        >
+          BOOKMARKS
+        </Button>
+        <Button
+          className={classes.topButtonRight}
+          variant="contained"
+          disabled
+        >
+          ALL POSTS
+        </Button>
+      </>
       )}
       {favoriteList.length ? (
         <Grid

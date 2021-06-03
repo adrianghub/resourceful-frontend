@@ -11,4 +11,10 @@ export default makeStyles((theme) => ({
   actionDiv: {
     textAlign: 'center',
   },
+  topButtonLeft: {
+    margin: "0 0 20px",
+  },
+  topButtonRight: {
+    margin: "0 10px 20px",
+  }
 }));
