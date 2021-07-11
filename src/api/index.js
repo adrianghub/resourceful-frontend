@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 // local host - dev
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+// const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 // prod
-// const API = axios.create({ baseURL: 'https://snippet-hint-backend.herokuapp.com' });
+const API = axios.create({ baseURL: 'https://snippet-hint-backend.herokuapp.com' });
 
 API.interceptors.request.use((req) => {
   if(localStorage.getItem('profile')) {
