@@ -32,7 +32,7 @@ export default function Post({ post, getModal, setCurrentId }) {
     <Card className={classes.card}>
       <div className={classes.overlay}>
         <Typography variant="h6">{name}</Typography>
-        <Typography variant="body2">{moment(createdAt).fromNow()}</Typography>
+        <Typography variant="body2">Last update: {moment(createdAt).fromNow()}</Typography>
       </div>
       {(user?.result?.googleId === post?.author ||
         user?.result?._id === post?.author) && (
