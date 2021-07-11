@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { TextField, Button, Typography, Paper, FormControlLabel, Checkbox } from "@material-ui/core";
+import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -113,17 +113,6 @@ export default function Form({ currentId, setCurrentId }) {
             setPostData({ ...postData, tags: e.target.value.split(",") })
           }
         />
-        {currentId && (
-          <FormControlLabel
-          control={<Checkbox
-          color="primary"
-          checked={postData.isLiked}
-          onChange={(e) => setPostData({ ...postData, isLiked: e.target.checked })}
-          />}
-          Bookmark
-          label="Bookmart Post"
-          />
-        )}
         <div className={classes.fileInput}>
           <span className={classes.fileInputText}>Upload image</span>
           <FileBase
