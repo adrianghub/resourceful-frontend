@@ -30,7 +30,6 @@ export default function Post({ post, getModal, setCurrentId }) {
 
   return (
     <Card className={classes.card}>
-      <CardMedia className={classes.media} image={selectedFile} title={title} />
       <div className={classes.overlay}>
         <Typography variant="h6">{name}</Typography>
         <Typography variant="body2">{moment(createdAt).fromNow()}</Typography>
@@ -39,7 +38,6 @@ export default function Post({ post, getModal, setCurrentId }) {
         user?.result?._id === post?.author) && (
         <div className={classes.overlay3}>
           <Button
-            style={{ color: "white" }}
             size="small"
             onClick={() => setCurrentId(post._id)}
           >
@@ -48,7 +46,7 @@ export default function Post({ post, getModal, setCurrentId }) {
         </div>
       )}
       <div className={classes.overlay2}>
-        <Button style={{ color: "white" }} size="small" onClick={getModal}>
+        <Button size="small" onClick={getModal}>
           <VisibilityIcon fontSize="default" />
         </Button>
       </div>
@@ -67,7 +65,7 @@ export default function Post({ post, getModal, setCurrentId }) {
 
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {message}
+          {message.substring(0, 120) + "..."}
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
