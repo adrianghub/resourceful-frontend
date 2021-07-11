@@ -39,7 +39,7 @@ const Navbar = () => {
       <div className={classes.brandContainer}>
         <img className={classes.image} src={LOGO_IMG} alt="logo" height="120" />
         <Typography className={classes.heading} component={Link} to="/" variant="h2" align="center">
-          Snippet Hint
+          Resourceful
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>

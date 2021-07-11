@@ -123,7 +123,7 @@ export default function Posts({ setCurrentId }) {
         </Button>
       </>
       )}
-      {favoriteList.length ? (
+      {user && favoriteList.length ? (
         <Grid
           className={classes.mainContainer}
           container

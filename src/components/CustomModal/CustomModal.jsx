@@ -15,33 +15,48 @@ const CustomModal = ({ show, hide, content }) => {
   return (
     <>
       {show && (
-          <Dialog
-            maxWidth="md"
-            onClose={hide}
-            aria-labelledby="customized-dialog-title"
-            open={show}
-          >
-            <DialogTitle id="customized-dialog-title" onClose={hide}>
-              {content.title}
-            </DialogTitle>
-            <DialogContent dividers>
-              <img
-                src={content.selectedFile}
-                className={classes.modalImage}
-                alt={content.title}
-              />
-            </DialogContent>
+        <Dialog
+          maxWidth="md"
+          onClose={hide}
+          aria-labelledby="customized-dialog-title"
+          open={show}
+        >
+          <DialogTitle id="customized-dialog-title" onClose={hide}>
+            {content.title}
+          </DialogTitle>
+          <DialogContent dividers>
+            <img
+              src={content.selectedFile}
+              className={classes.modalImage}
+              alt={content.title}
+            />
+          </DialogContent>
+
+          {content.snippetUrl.startsWith('https') && content.snippetUrl && (
             <DialogContent dividers>
               <Typography gutterBottom>
-              <iframe width="100%" height="500" src={content.snippetUrl} allowFullScreen={true} frameBorder="0" title={content.title}></iframe>
+                <iframe
+                  width="100%"
+                  height="500"
+                  src={content.snippetUrl}
+                  allowFullScreen={true}
+                  frameBorder="0"
+                  title={content.title}
+                ></iframe>
               </Typography>
             </DialogContent>
-            <DialogActions>
-              <Button autoFocus onClick={hide} color="primary">
-                Close
-              </Button>
-            </DialogActions>
-          </Dialog>
+          )}
+          <DialogContent dividers>
+              <Typography gutterBottom>
+                {content.message}
+              </Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button autoFocus onClick={hide} color="primary">
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
       )}
     </>
   );

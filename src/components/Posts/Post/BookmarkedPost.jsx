@@ -12,16 +12,16 @@ import moment from "moment";
 
 import useStyles from "./styles";
 
-export default function Post({ post, getModal }) {
+export default function BookmarkedPost({ post, getModal }) {
   const classes = useStyles();
 
-  const { title, author, createdAt, message, tags, selectedFile } = post;
+  const { name, title, createdAt, message, tags, selectedFile } = post;
 
   return (
     <Card className={classes.card}>
       <CardMedia className={classes.media} image={selectedFile} title={title} />
       <div className={classes.overlay}>
-        <Typography variant="h6">{author}</Typography>
+        <Typography variant="h6">{name}</Typography>
         <Typography variant="body2">{moment(createdAt).fromNow()}</Typography>
       </div>
       <div className={classes.overlay2}>

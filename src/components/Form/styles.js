@@ -15,11 +15,19 @@ export default makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
+  'fileInputIcon > input[type="file"]': {
+    display: 'none',
+  },
   fileInput: {
     width: '100%',
     margin: '20px auto',
+    cursor: 'pointer',
+    padding: '5px 10px',
+  },
+  fileInputText: {
+    marginRight: '20px',
   },
   button: {
     margin: '0 20px',
-  },
+  }
 }));
