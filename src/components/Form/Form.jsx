@@ -12,7 +12,7 @@ export default function Form({ currentId, setCurrentId }) {
     title: "",
     message: "",
     snippetUrl: "",
-    tags: "",
+    tags: [],
     selectedFile: "",
     isLiked: false,
   });
@@ -58,7 +58,7 @@ export default function Form({ currentId, setCurrentId }) {
       title: "",
       message: "",
       snippetUrl: "",
-      tags: "",
+      tags: [],
       selectedFile: null,
       isLiked: false,
     });
@@ -131,16 +131,33 @@ export default function Form({ currentId, setCurrentId }) {
             alignItems: "center",
           }}
         >
-          <Button
-            className={classes.button}
-            variant="outlined"
-            color="primary"
-            size="large"
-            type="submit"
-            fullWidth
-          >
-            Submit
-          </Button>
+          {postData?.title &&
+          postData?.message &&
+          postData?.snippetUrl &&
+          postData?.tags.length ? (
+            <Button
+              className={classes.button}
+              variant="outlined"
+              color="primary"
+              size="large"
+              type="submit"
+              fullWidth
+            >
+              Submit
+            </Button>
+          ) : (
+            <Button
+              className={classes.button}
+              variant="outlined"
+              color="primary"
+              size="large"
+              type="submit"
+              fullWidth
+              disabled
+            >
+              Submit
+            </Button>
+          )}
           <Button
             className={classes.button}
             variant="outlined"
