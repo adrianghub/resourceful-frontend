@@ -12,7 +12,7 @@ export default function Form({ currentId, setCurrentId }) {
     title: "",
     message: "",
     snippetUrl: "",
-    tags: "",
+    tags: [],
     selectedFile: "",
     isLiked: false,
   });
@@ -58,8 +58,8 @@ export default function Form({ currentId, setCurrentId }) {
       title: "",
       message: "",
       snippetUrl: "",
-      tags: "",
-      selectedFile: null,
+      tags: [],
+      selectedFile: "",
       isLiked: false,
     });
   };
@@ -87,6 +87,8 @@ export default function Form({ currentId, setCurrentId }) {
           name="message"
           variant="outlined"
           label="Message"
+          multiline
+          rows={6}
           fullWidth
           value={postData.message}
           onChange={(e) =>
@@ -131,16 +133,35 @@ export default function Form({ currentId, setCurrentId }) {
             alignItems: "center",
           }}
         >
-          <Button
-            className={classes.button}
-            variant="outlined"
-            color="primary"
-            size="large"
-            type="submit"
-            fullWidth
-          >
-            Submit
-          </Button>
+          {postData?.title &&
+          postData?.title.length <= 50 &&
+          postData?.message &&
+          postData?.snippetUrl &&
+          postData?.tags.length &&
+          postData?.tags.length <= 3 ? (
+            <Button
+              className={classes.button}
+              variant="outlined"
+              color="primary"
+              size="large"
+              type="submit"
+              fullWidth
+            >
+              Submit
+            </Button>
+          ) : (
+            <Button
+              className={classes.button}
+              variant="outlined"
+              color="primary"
+              size="large"
+              type="submit"
+              fullWidth
+              disabled
+            >
+              Submit
+            </Button>
+          )}
           <Button
             className={classes.button}
             variant="outlined"

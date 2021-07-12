@@ -39,7 +39,7 @@ export const deletePost = (id) => async (dispatch) => {
 
     dispatch({ type: DELETE, payload: id });
   } catch (error) {
-    Comment.log(error);
+    console.log(error);
   }
 }
 

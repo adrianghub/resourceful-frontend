@@ -19,7 +19,6 @@ export default function BookmarkedPost({ post, getModal }) {
 
   return (
     <Card className={classes.card}>
-      <CardMedia className={classes.media} image={selectedFile} title={title} />
       <div className={classes.overlay}>
         <Typography variant="h6">{name}</Typography>
         <Typography variant="body2">{moment(createdAt).fromNow()}</Typography>

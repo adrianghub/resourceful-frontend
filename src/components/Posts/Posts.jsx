@@ -6,6 +6,7 @@ import Post from "./Post/Post";
 import BookmarkedPost from "./Post/BookmarkedPost";
 import SearchInput from "../SearchInput/SearchInput";
 import CustomModal from "../CustomModal/CustomModal";
+import moment from "moment";
 
 import useStyles from "./styles";
 
@@ -150,7 +151,7 @@ export default function Posts({ setCurrentId }) {
           alignItems="stretch"
           spacing={3}
         >
-          {posts.map((post) => (
+          {posts.sort((postA, postB) => moment(postB.createdAt).toDate() - moment(postA.createdAt).toDate()).map((post) => (
             <Grid key={post._id} item xs={12} sm={12}>
               <Post
                 post={post}

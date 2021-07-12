@@ -42,7 +42,7 @@ const Navbar = () => {
           Resourceful
         </Typography>
       </div>
-      <Toolbar className={classes.toolbar}>
+      <Toolbar className={user ? classes.toolbar : classes.toolbarWithoutUser}>
         {user ? (
           <div className={classes.profile}>
             <Avatar className={classes.grey} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>

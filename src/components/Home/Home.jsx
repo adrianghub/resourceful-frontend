@@ -29,12 +29,12 @@ const Home = () => {
           container
           justify="space-between"
           alignItems="stretch"
-          spacing={3}
+          spacing={4}
         >
           <Grid item xs={12} md={7}>
             <Posts setCurrentId={setCurrentId} />
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={5}>
             <div style={{'position': 'sticky', 'top': '10px'}}>
             <Form
               className={classes.form}

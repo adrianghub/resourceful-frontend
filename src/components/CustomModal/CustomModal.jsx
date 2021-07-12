@@ -24,15 +24,17 @@ const CustomModal = ({ show, hide, content }) => {
           <DialogTitle id="customized-dialog-title" onClose={hide}>
             {content.title}
           </DialogTitle>
-          <DialogContent dividers>
-            <img
-              src={content.selectedFile}
-              className={classes.modalImage}
-              alt={content.title}
-            />
-          </DialogContent>
 
-          {content.snippetUrl.startsWith('https') && content.snippetUrl && (
+          {content.selectedFile && (
+            <DialogContent style={{ "overflow": "hidden" }} dividers>
+              <img
+                src={content.selectedFile}
+                className={classes.modalImage}
+                alt={content.title}
+              />
+            </DialogContent>
+          )}
+          {content.snippetUrl.startsWith('https') && content.snippetUrl.includes('wikipedia') && content.snippetUrl && (
             <DialogContent dividers>
               <Typography gutterBottom>
                 <iframe
