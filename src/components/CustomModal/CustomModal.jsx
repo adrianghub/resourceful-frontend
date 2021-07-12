@@ -26,7 +26,7 @@ const CustomModal = ({ show, hide, content }) => {
           </DialogTitle>
 
           {content.selectedFile && (
-            <DialogContent dividers>
+            <DialogContent style={{ "overflow": "hidden" }} dividers>
               <img
                 src={content.selectedFile}
                 className={classes.modalImage}
