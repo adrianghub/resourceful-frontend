@@ -59,7 +59,7 @@ export default function Form({ currentId, setCurrentId }) {
       message: "",
       snippetUrl: "",
       tags: [],
-      selectedFile: null,
+      selectedFile: "",
       isLiked: false,
     });
   };
