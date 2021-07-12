@@ -87,6 +87,8 @@ export default function Form({ currentId, setCurrentId }) {
           name="message"
           variant="outlined"
           label="Message"
+          multiline
+          rows={6}
           fullWidth
           value={postData.message}
           onChange={(e) =>
@@ -132,9 +134,11 @@ export default function Form({ currentId, setCurrentId }) {
           }}
         >
           {postData?.title &&
+          postData?.title.length <= 50 &&
           postData?.message &&
           postData?.snippetUrl &&
-          postData?.tags.length ? (
+          postData?.tags.length &&
+          postData?.tags.length <= 3 ? (
             <Button
               className={classes.button}
               variant="outlined"

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles({
+export default makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: '56.25%',
@@ -53,4 +53,12 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
-});
+  [theme.breakpoints.down("xs")]: {
+    title: {
+      fontSize: '1.6rem',
+    },
+    tags: {
+      display: 'none',
+    }
+  },
+}));
