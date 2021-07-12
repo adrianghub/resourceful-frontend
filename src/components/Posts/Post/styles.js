@@ -53,9 +53,14 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  [theme.breakpoints.down("md")]: {
+    title: {
+      fontSize: '1.4rem',
+    }
+  },
   [theme.breakpoints.down("xs")]: {
     title: {
-      fontSize: '1.6rem',
+      fontSize: '1.2rem',
     },
     tags: {
       display: 'none',

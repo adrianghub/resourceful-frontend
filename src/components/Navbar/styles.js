@@ -33,6 +33,10 @@ export default makeStyles((theme) => ({
     justifyContent: "flex-end",
     width: "300px",
   },
+  toolbarWithoutUser: {
+    display: "flex",
+    justifyContent: "center",
+  },
   profile: {
     display: "flex",
     justifyContent: "space-between",
